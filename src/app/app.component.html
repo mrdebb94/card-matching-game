@@ -1,6 +1,13 @@
 <div class="game-header">
-
+  <img class="logo" src="assets/svgs/splendex-logo.svg" />
+  <!--
+  <app-start-new-game></app-start-new-game>
+  -->
+  <router-outlet></router-outlet>
 </div>
 <div class="game-body">
-  <app-start-new-game></app-start-new-game>
+  <!--
+  <app-game-deck [cardImageNames]="cardImageNames"></app-game-deck>
+  -->
+  <router-outlet name='child2'></router-outlet>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { GameService } from "../game.service";
 
 @Component({
   selector: "app-start-new-game",
@@ -10,12 +11,16 @@ export class StartNewGameComponent implements OnInit {
   selectedDeckSize: number;
   selectedCardNumber: number;
 
-  constructor() {}
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {}
 
   selectCardNumber(cardNumber: number) {
     this.selectedCardNumber = cardNumber;
     this.selectedDeckSize = cardNumber * 2;
+  }
+
+  startNewGame() {
+    this.gameService.startNewGame(this.selectedCardNumber);
   }
 }

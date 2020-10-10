@@ -1,0 +1,5 @@
+<div>Current tries: {{currentTries}}</div>
+<div>Best: {{best}}</div>
+<app-game-deck [cardNumber]="cardNumber" [matrix]="matrix" (onSecondCardFlipped)="onSecondCardFlipped()"
+    onGameFinished="onGameFinished()">
+</app-game-deck>
