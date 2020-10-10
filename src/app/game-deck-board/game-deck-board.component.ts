@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { Subscription } from "rxjs";
+import { GameDeckComponent } from "../game-deck/game-deck.component";
 import { GameService } from "../game.service";
 
 @Component({
@@ -14,6 +15,7 @@ export class GameDeckBoardComponent implements OnInit {
   cardNumber: number;
 
   private newGameStartingSubscription: Subscription;
+  @ViewChild(GameDeckComponent) gameDeckComponent: GameDeckComponent;
 
   constructor(private gameService: GameService) {}
 
@@ -26,8 +28,8 @@ export class GameDeckBoardComponent implements OnInit {
   }
 
   onNewGameStarted = (cardNumber) => {
-    this.cardNumber = cardNumber;
-    this.matrix = JSON.parse(localStorage.getItem("matrix"));
+    this.cardNumber = this.gameService.getCardNumber();
+    this.matrix = this.gameService.getMatrix();
   };
 
   onSecondCardFlipped = () => {
@@ -40,6 +42,11 @@ export class GameDeckBoardComponent implements OnInit {
         ? this.currentTries
         : Math.min(this.currentTries, this.best);
   };
+
+  restart() {
+    this.currentTries = 0;
+    this.gameDeckComponent.clear();
+  }
 
   ngOnDestroy(): void {
     if (this.newGameStartingSubscription) {

@@ -55,6 +55,15 @@ export class GameService {
     } while (matrix.length != cardNumber);
 
     localStorage.setItem("matrix", JSON.stringify(matrix));
+    localStorage.setItem("cardNumber", String(cardNumber));
     this.newGameStartingSource.next(cardNumber);
+  }
+
+  getCardNumber() {
+    return Number(localStorage.getItem("cardNumber"));
+  }
+
+  getMatrix() {
+    return JSON.parse(localStorage.getItem("matrix"));
   }
 }

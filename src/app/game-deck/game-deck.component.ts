@@ -45,8 +45,9 @@ export class GameDeckComponent implements OnInit, OnDestroy {
               gameDeckCardComponent.removed = true;
             }
           }
-          this.cardMatchesCount++;
+
           if (this.cardMatchesCount == this.cardNumber) {
+            this.cardMatchesCount = 0;
             this.onGameFinished.emit();
           }
         } else {
@@ -69,6 +70,13 @@ export class GameDeckComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.cardMismatchingTimeout) {
       clearTimeout(this.cardMismatchingTimeout);
+    }
+  }
+
+  clear() {
+    for (let gameDeckCardComponent of this.gameDeckCardComponents) {
+      gameDeckCardComponent.removed = false;
+      gameDeckCardComponent.flipped = false;
     }
   }
 }

@@ -1,5 +1,6 @@
 <div>Current tries: {{currentTries}}</div>
 <div>Best: {{best}}</div>
+<button (click)="restart()">Restart</button>
 <app-game-deck [cardNumber]="cardNumber" [matrix]="matrix" (onSecondCardFlipped)="onSecondCardFlipped()"
-    onGameFinished="onGameFinished()">
+    (onGameFinished)="onGameFinished()">
 </app-game-deck>
