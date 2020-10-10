@@ -1,0 +1,14 @@
+<span>Deck Size</span>
+<div class="dropdown" appDropdown #dropDown="appDropdown">
+    <div class="dropdown-toggle" appDropdownToggle>
+        {{selectedDeckSize}}
+    </div>
+    <div class="dropdown-menu" appDropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-item" *ngFor="let cardNumber of cardNumbers;" (click)="selectCardNumber(cardNumber)">
+            {{ cardNumber*2 }}
+        </div>
+    </div>
+</div>
+<button class="new-game-button">
+    Start new game
+</button>

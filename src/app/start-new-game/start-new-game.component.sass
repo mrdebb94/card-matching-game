@@ -1,0 +1,25 @@
+.new-game-button
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 2rem
+    padding: 0 2rem
+    border: 1px solid rgb(200, 200, 200)
+    border: none
+    border-radius: .25rem
+    background-color: rgb(255,48,0)
+    color: white
+    font-family: Roboto
+    font-size: 14px
+    // font-weight: 600
+    cursor: pointer
+    outline: none
+    &:hover
+        background-color: #2ba1ef
+    &:focus
+        border-color: rgb(84, 180, 245)
+    &:disabled
+        border: 1px solid transparent
+        background-color: rgb(233, 233, 233)
+        color: rgb(180, 180, 180)
+        cursor: default

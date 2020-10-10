@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+// Main colors
+$color-main: rgb(28, 109, 164)
+$color-main-light: rgb(48, 130, 185)
+//$color-main-dark: rgb(22, 90, 135)
+$color-main-dark: rgb(15, 69, 105)
+
+// Button
+$_button-blue-default-r: 55
+$_button-blue-default-g: 161
+$_button-blue-default-b: 232
+
+$_button-grey-default-r: 111
+$_button-grey-default-g: 111
+$_button-grey-default-b: 111
+
+$button-blue-default: rgb($_button-blue-default-r, $_button-blue-default-g, $_button-blue-default-b)
+$button-blue-hover: rgb(84, 180, 245)
+
+$button-grey-default: rgb($_button-grey-default-r, $_button-grey-default-g, $_button-grey-default-b)
+$button-grey-hover: rgb(133, 133, 133)
+
+// Input
+$color-input-focus: rgb(228, 242, 255)
+.dropdown
+  position: relative
+  height: 30px
+  font-size: 12px
+  .dropdown-toggle
+    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 100%
+    padding: 0 40px 0 10px
+    //border: 1px solid rgb(200, 200, 200)
+    background-color: rgb(248, 248, 248)
+    background-color: rgb(233, 233, 233)
+    cursor: pointer
+    &:hover
+      background-color: rgb(240, 240, 240)
+    &::after
+      position: absolute
+      top: calc(50% - 1px)
+      right: 10px
+      content: ""
+      width: 0
+      height: 0
+      border-left: 5px solid transparent
+      border-right: 5px solid transparent
+      border-top: 5px solid rgb(128, 128, 128)
+    &.disabled
+      border-color: transparent
+      background-color: rgb(233, 233, 233)
+      color: rgb(180, 180, 180)
+      cursor: default
+      pointer-events: none
+      &::after
+        border-top: 5px solid rgb(180, 180, 180)
+  .dropdown-menu
+    position: absolute
+    z-index: 9999
+    top: 100%
+    width: 100%
+    border: 1px solid rgb(200, 200, 200)
+    border-top: none
+    background-color: white
+    .dropdown-item
+      display: flex
+      align-items: center
+      height: 30px
+      padding-left: 10px
+      cursor: pointer
+      &:hover
+        background-color: $color-input-focus
+        color: $color-main
