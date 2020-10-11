@@ -29,8 +29,16 @@ export class GameService {
     this.currentWidth = 1;
     this.currentHeight = 1;
     this.generateDeckSize(2 * cardNumber);
+
+    if (this.currentHeight > this.currentWidth) {
+      var t = this.currentHeight;
+      this.currentHeight = this.currentWidth;
+      this.currentWidth = t;
+    }
+
     console.log("WIDTH " + this.currentWidth);
     console.log("HEIGHT " + this.currentHeight);
+
     var randomlySelectedCardImageNames = [];
     do {
       var index = Math.floor(Math.random() * this.cardImageNames.length);
@@ -54,12 +62,12 @@ export class GameService {
       if (counts[index] < 2) {
         counts[index]++;
         row.push(randomlySelectedCardImageNames[index]);
-        if (row.length == 2) {
+        if (row.length == this.currentWidth) {
           matrix.push(row);
           row = [];
         }
       }
-    } while (matrix.length != cardNumber);
+    } while (matrix.length != this.currentHeight);
 
     localStorage.setItem("matrix", JSON.stringify(matrix));
     localStorage.setItem("cardNumber", String(cardNumber));
