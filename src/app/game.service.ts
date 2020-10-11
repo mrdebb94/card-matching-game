@@ -6,6 +6,8 @@ import { Subject } from "rxjs";
 })
 export class GameService {
   private newGameStartingSource = new Subject<number>();
+  private currentWidth: number = 1;
+  private currentHeight: number = 1;
   private cardImageNames = [
     "angular",
     "d3",
@@ -24,6 +26,11 @@ export class GameService {
   newGameStarting$ = this.newGameStartingSource.asObservable();
 
   startNewGame(cardNumber: number) {
+    this.currentWidth = 1;
+    this.currentHeight = 1;
+    this.generateDeckSize(2 * cardNumber);
+    console.log("WIDTH " + this.currentWidth);
+    console.log("HEIGHT " + this.currentHeight);
     var randomlySelectedCardImageNames = [];
     do {
       var index = Math.floor(Math.random() * this.cardImageNames.length);
@@ -65,5 +72,16 @@ export class GameService {
 
   getMatrix() {
     return JSON.parse(localStorage.getItem("matrix"));
+  }
+
+  private generateDeckSize(deckSize: number) {
+    if (deckSize % Math.sqrt(deckSize) == 0) {
+      this.currentWidth *= Math.sqrt(deckSize);
+      this.currentHeight = Math.sqrt(deckSize);
+    } else if (deckSize % 2 == 0) {
+      this.currentWidth *= 2;
+      this.currentHeight = Math.floor(deckSize / 2);
+      this.generateDeckSize(Math.floor(deckSize / 2));
+    }
   }
 }
