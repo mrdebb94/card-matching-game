@@ -1,9 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { GameDeckBoardComponent } from "./game-deck-board/game-deck-board.component";
-import { GameDeckComponent } from "./game-deck/game-deck.component";
 import { StartNewGameBodyComponent } from "./start-new-game-body/start-new-game-body.component";
-import { StartNewGameComponent } from "./start-new-game/start-new-game.component";
+import { StartNewGameHeaderComponent } from "./start-new-game-header/start-new-game-header.component";
 
 const routes: Routes = [
   {
@@ -26,7 +25,7 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: StartNewGameComponent,
+        component: StartNewGameHeaderComponent,
       },
       {
         path: "",

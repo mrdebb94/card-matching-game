@@ -10,6 +10,7 @@ import { StartNewGameBodyComponent } from "./start-new-game-body/start-new-game-
 import { GameStatusComponent } from "./game-status/game-status.component";
 import { GameDeckBoardComponent } from "./game-deck-board/game-deck-board.component";
 import { GameDeckCardComponent } from './game-deck-card/game-deck-card.component';
+import { StartNewGameHeaderComponent } from './start-new-game-header/start-new-game-header.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { GameDeckCardComponent } from './game-deck-card/game-deck-card.component
     GameStatusComponent,
     GameDeckBoardComponent,
     GameDeckCardComponent,
+    StartNewGameHeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
