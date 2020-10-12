@@ -21,6 +21,8 @@ export class StartNewGameComponent implements OnInit {
   }
 
   startNewGame() {
-    this.gameService.startNewGame(this.selectedCardNumber);
+    if (this.selectedCardNumber != null) {
+      this.gameService.startNewGame(this.selectedCardNumber);
+    }
   }
 }

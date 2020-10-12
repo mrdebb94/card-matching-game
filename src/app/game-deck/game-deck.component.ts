@@ -38,7 +38,9 @@ export class GameDeckComponent implements OnInit, OnDestroy {
     if (this.flippedCards.length < 2) {
       this.flippedCards.push(card);
       if (this.flippedCards.length == 2) {
+        this.onSecondCardFlipped.emit();
         if (this.flippedCards[0] == this.flippedCards[1]) {
+          this.cardMatchesCount++;
           this.flippedCards = [];
           for (let gameDeckCardComponent of this.gameDeckCardComponents) {
             if (gameDeckCardComponent.flipped) {
@@ -46,6 +48,7 @@ export class GameDeckComponent implements OnInit, OnDestroy {
             }
           }
 
+          console.log(this.cardMatchesCount + " " + this.cardNumber);
           if (this.cardMatchesCount == this.cardNumber) {
             this.cardMatchesCount = 0;
             this.onGameFinished.emit();
@@ -58,7 +61,6 @@ export class GameDeckComponent implements OnInit, OnDestroy {
             }
           }, 100);
         }
-        this.onSecondCardFlipped.emit();
       }
     } else {
       gameDeckCardComponent.flipped = false;
@@ -74,6 +76,8 @@ export class GameDeckComponent implements OnInit, OnDestroy {
   }
 
   clear() {
+    this.cardMatchesCount = 0;
+    this.flippedCards = [];
     for (let gameDeckCardComponent of this.gameDeckCardComponents) {
       gameDeckCardComponent.removed = false;
       gameDeckCardComponent.flipped = false;

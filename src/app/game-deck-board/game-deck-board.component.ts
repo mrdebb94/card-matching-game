@@ -21,6 +21,7 @@ export class GameDeckBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.matrix = JSON.parse(localStorage.getItem("matrix"));
+    this.cardNumber = this.gameService.getCardNumber();
 
     this.newGameStartingSubscription = this.gameService.newGameStarting$.subscribe(
       this.onNewGameStarted
@@ -28,8 +29,11 @@ export class GameDeckBoardComponent implements OnInit {
   }
 
   onNewGameStarted = (cardNumber) => {
+    this.currentTries = 0;
+    this.best = null;
     this.cardNumber = this.gameService.getCardNumber();
     this.matrix = this.gameService.getMatrix();
+    this.gameDeckComponent.clear();
   };
 
   onSecondCardFlipped = () => {

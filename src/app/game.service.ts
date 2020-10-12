@@ -36,9 +36,6 @@ export class GameService {
       this.currentWidth = t;
     }
 
-    console.log("WIDTH " + this.currentWidth);
-    console.log("HEIGHT " + this.currentHeight);
-
     var randomlySelectedCardImageNames = [];
     do {
       var index = Math.floor(Math.random() * this.cardImageNames.length);

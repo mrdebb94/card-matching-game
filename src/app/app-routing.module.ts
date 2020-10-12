@@ -7,6 +7,11 @@ import { StartNewGameComponent } from "./start-new-game/start-new-game.component
 
 const routes: Routes = [
   {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "start-new-game",
+  },
+  {
     path: "start-new-game",
     children: [
       {
